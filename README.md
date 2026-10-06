@@ -89,6 +89,7 @@ Funfinity Token System/
     ├── functions.sql
     ├── exceptions.sql
     └── transaction_demo.sql
+```
 
 ## ⚙️ Setup & Execution
 Execute the scripts in the following order in Oracle SQL Developer:
@@ -103,6 +104,7 @@ Execute the scripts in the following order in Oracle SQL Developer:
 @database/triggers.sql
 @plsql/procedures.sql
 @plsql/functions.sql
+```
 
 ## Project Objective
 
