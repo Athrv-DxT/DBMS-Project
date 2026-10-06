@@ -81,10 +81,13 @@ Funfinity Token System/
 │   ├── constraints.sql
 │   ├── sequences.sql
 │   ├── sample_data.sql
+│   ├── queries.sql
 │   ├── views.sql
 │   ├── indexes.sql
 │   └── triggers.sql
 └── plsql/
+    ├── basic_block.sql
+    ├── cursors.sql
     ├── procedures.sql
     ├── functions.sql
     ├── exceptions.sql
