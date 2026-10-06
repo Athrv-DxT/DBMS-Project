@@ -1,0 +1,12 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+
+# Oracle SQL Developer export/log files
+*.log
+*.dmp
