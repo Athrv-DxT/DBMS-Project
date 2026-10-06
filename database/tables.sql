@@ -1,0 +1,58 @@
+DROP TABLE AUDIT_LOG CASCADE CONSTRAINTS;
+DROP TABLE TRANSACTIONS CASCADE CONSTRAINTS;
+DROP TABLE TOKEN_TRANSFERS CASCADE CONSTRAINTS;
+DROP TABLE WALLETS CASCADE CONSTRAINTS;
+DROP TABLE USERS CASCADE CONSTRAINTS;
+DROP TABLE ROLES CASCADE CONSTRAINTS;
+
+CREATE TABLE ROLES (
+    role_id     NUMBER(5) NOT NULL,
+    role_name   VARCHAR2(50) NOT NULL
+);
+
+CREATE TABLE USERS (
+    user_id     NUMBER(10) NOT NULL,
+    name        VARCHAR2(100) NOT NULL,
+    email       VARCHAR2(150) NOT NULL,
+    password    VARCHAR2(255) NOT NULL,
+    role_id     NUMBER(5) NOT NULL,
+    status      VARCHAR2(20) DEFAULT 'ACTIVE' NOT NULL,
+    created_at  DATE DEFAULT SYSDATE NOT NULL
+);
+
+CREATE TABLE WALLETS (
+    wallet_id   NUMBER(10) NOT NULL,
+    user_id     NUMBER(10) NOT NULL,
+    balance     NUMBER(12, 2) DEFAULT 0.00 NOT NULL,
+    created_at  DATE DEFAULT SYSDATE NOT NULL
+);
+
+CREATE TABLE TOKEN_TRANSFERS (
+    transfer_id        NUMBER(10) NOT NULL,
+    sender_wallet_id   NUMBER(10) NOT NULL,
+    receiver_wallet_id NUMBER(10) NOT NULL,
+    amount             NUMBER(12, 2) NOT NULL,
+    transfer_date      DATE DEFAULT SYSDATE NOT NULL,
+    status             VARCHAR2(20) DEFAULT 'COMPLETED' NOT NULL
+);
+
+CREATE TABLE TRANSACTIONS (
+    transaction_id   NUMBER(10) NOT NULL,
+    wallet_id        NUMBER(10) NOT NULL,
+    transaction_type VARCHAR2(20) NOT NULL,
+    amount           NUMBER(12, 2) NOT NULL,
+    reference_id     NUMBER(10),
+    transaction_date DATE DEFAULT SYSDATE NOT NULL,
+    status           VARCHAR2(20) DEFAULT 'COMPLETED' NOT NULL
+);
+
+CREATE TABLE AUDIT_LOG (
+    audit_id    NUMBER(10) NOT NULL,
+    table_name  VARCHAR2(50) NOT NULL,
+    record_id   NUMBER(10) NOT NULL,
+    operation   VARCHAR2(20) NOT NULL,
+    old_value   VARCHAR2(400),
+    new_value   VARCHAR2(400),
+    changed_by  VARCHAR2(50) DEFAULT USER NOT NULL,
+    changed_at  DATE DEFAULT SYSDATE NOT NULL
+);
